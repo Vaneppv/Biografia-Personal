@@ -1,0 +1,8 @@
+{
+  "liveServer.settings.port": 5501,
+  "liveServer.settings.root": "/",
+  "liveServer.settings.CustomBrowser": "opera",
+  "liveServer.settings.ignoreFiles": ["**/.vscode/**"],
+  "liveServer.settings.wait": 500,
+  "liveServer.settings.useLocalIp": true
+}
