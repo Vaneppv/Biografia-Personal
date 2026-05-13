@@ -1,62 +1,279 @@
-html {
-    background-color: rgb(140, 16, 7);
+/* 1. FUENTES Y CONFIGURACIÓN BASE */
+@font-face {
+    font-family: "anime-ace";
+    src: url(/fonts/animeace2_reg.ttf) format("truetype");
 }
 
-.main-info img{
-    align-self: start;
-    padding-left: 100px;
+html, body {
+    height: 100%;
+    margin: 0;
+    background-color: rgb(140, 16, 7);
+    color: rgb(255, 246, 246);
+    font-family: "Delius", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
 
+* { box-sizing: border-box; }
+
+/* 2. HEADER / NAVEGACIÓN */
+header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background-color: rgb(140, 16, 7);
+    font-size: large;
+}
+
+.barra-superior-derecha {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+header a {
+    font-family: "Delius", sans-serif;
+    color: inherit;
+    text-decoration: none;
+    padding: 8px 10px;
+}
+
+header a:hover { text-decoration: underline; }
+
+.icono-ig {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.icono-ig:hover {
+    color: #E1306C;
+    transform: scale(1.1);
+}
+
+/* 3. SECCIÓN MAIN (POSICIONES ORIGINALES DE LA CAPTURA) */
+.main-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 40px 5%;
+    gap: 20px;
+    min-height: 75vh;
+}
+
+.contenedor-imagen {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start; 
+}
+
+.contenedor-imagen img {
+    width: 100%;
+    max-width: 450px; 
+    height: auto;
+    filter: drop-shadow(10px 10px 20px rgba(0,0,0,0.5)); 
 }
 
 .texto-main {
-    color: rgb(238, 238, 238);
-    font-family: "Bangers";
-    font-weight: 100;
-    padding: 20px;
-    font-size: 45px;
-    font-style: normal;
-
-}
-img {
-    width: 400px;
-}
-
-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background-color: rgb(140, 16, 7);
+    flex: 2;
     color: rgb(255, 246, 246);
-    font-family: "Delius";
+    font-family: "anime-ace", "Bangers", cursive;
+    padding: 20px;
+    font-size: clamp(28px, 5vw, 60px); 
+    line-height: 1.1;
+    text-align: left; 
+    text-transform: uppercase; 
+    margin: 0;
 }
 
-div.barra-superior-derecha {
+.contenedor-spotify {
+    flex: 1;
+    width: 100%;
+    max-width: 320px;
     display: flex;
     justify-content: flex-end;
-    align-items: center;
-    color: inherit;
 }
 
-div.barra-superior-izquierda {
-    padding-left: 5px;
+.sub-texto-main {
+    font-family: "Delius", sans-serif;
+    font-size: 18px;
+    text-align: center;
+    padding-bottom: 80px;
 }
 
-a,
-a:visited,
-a:active {
-    font-family: "Delius";
-    font-weight: 200;
-    padding: 10px;
-    color: inherit;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: none;
-}
-
-div.main-info {
+/* 4. SECCIÓN HISTORIA (CARRUSEL SIN JAVASCRIPT) */
+.contenido {
+    max-width: 1300px;
+    margin: 0 auto;
     display: flex;
-    align-items: start;
+    flex-direction: row;
+    align-items: center;
+    gap: 100px; /* Separación amplia como en el bosquejo */
+    padding: 40px 5% 100px 5%;
+}
+
+.texto-historia {
+    flex: 1;
+}
+
+.texto-historia h1 {
+    font-family: "anime-ace", sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.texto-historia p {    
+    font-family: "Delius", sans-serif;
+    line-height: 1.3;
+}
+
+.imagen-historia {
+    flex: 1.5;
+}
+
+/* Contenedor del carrusel */
+/* Busca esta sección en tu CSS y reemplázala */
+
+/* Reemplaza estas reglas en tu archivo styles.css */
+
+.carrusel-contenedor {
+    width: 100%;
+    max-width: 900px; 
+    height: 700px; /* La altura fija que definimos */
+    border-radius: 15px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+    overflow: hidden;
+    position: relative;
+}
+
+.carrusel-img {
+    width: 20%; 
+    height: 100%; 
+    
+    /* CAMBIO CLAVE: 'fill' estira la imagen para que ocupe todo el alto */
+    /* Esto elimina el espacio vacío (box) que aparece en image_7edb21.jpg */
+    object-fit: fill; 
+
+    
+    display: block;
+}
+
+/* Ajuste para que en celulares no quede excesivamente alto */
+@media (max-width: 900px) {
+    .carrusel-contenedor {
+        height: 500px; 
+    }
+}
+
+/* Pista que contiene las fotos */
+.carrusel-pista {
+    display: flex;
+    width: 500%; /* Para 4 fotos + 1 de transición */
+    animation: carrusel-css 20s infinite ease-in-out;
+}
+
+/* Animación del carrusel (Pasos de 20%) */
+@keyframes carrusel-css {
+    0%, 20% { transform: translateX(0); }
+    25%, 45% { transform: translateX(-20%); }
+    50%, 70% { transform: translateX(-40%); }
+    75%, 95% { transform: translateX(-60%); }
+    100% { transform: translateX(-80%); }
+}
+
+/* 5. RESPONSIVIDAD */
+@media (max-width: 1000px) {
+    .main-info, .contenido {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .texto-main, .texto-historia p {
+        text-align: center;
+    }
+
+    .contenedor-imagen, .contenedor-spotify, .imagen-historia {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .carrusel-contenedor {
+        max-width: 95%;
+    }
+}
+
+/* --- SECCIÓN DE COLUMNAS CON ICONOS --- */
+
+.seccion-columnas {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 5%;
+}
+
+.columnas-header {
+    border-bottom: 1px solid rgba(255, 246, 246, 0.3);
+    margin-bottom: 40px;
+}
+
+.columnas-header h2 {
+    font-family: "anime-ace", sans-serif;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.columnas-grid {
+    display: flex;
+    gap: 40px;
+    justify-content: space-between;
+}
+
+.columna-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Caja azul del icono como en image_747233.png */
+.icono-caja {
+    background-color: #0d6efd; /* Azul vibrante */
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.columna-item h3 {
+    font-family: "anime-ace", sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.columna-item p {
+    font-family: "Delius", sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Responsividad para móviles */
+@media (max-width: 800px) {
+    .columnas-grid {
+        flex-direction: column;
+        gap: 50px;
+    }
+    
+    .columna-item {
+        align-items: center;
+        text-align: center;
+    }
 }
