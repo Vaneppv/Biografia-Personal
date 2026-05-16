@@ -112,7 +112,6 @@ h1, h2, h3,
 .columnas-grid .columna-item h3,
 .columnas-grid .columna-item p {
     -webkit-text-stroke: 1.6px #000;
-    text-stroke: 1.6px #000;
     text-shadow: 0 1px 0 #000, 1px 0 0 #000, -1px 0 0 #000, 0 -1px 0 #000;
 }
 
@@ -124,7 +123,6 @@ h1, h2, h3,
     .columnas-grid .columna-item h3,
     .columnas-grid .columna-item p {
         -webkit-text-stroke: 0 !important;
-        text-stroke: 0 !important;
         text-shadow: none !important;
     }
 }
