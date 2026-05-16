@@ -61,7 +61,7 @@ header a:hover { text-decoration: underline; }
     font-size: 1.5rem;
     display: flex;
     align-items: center;
-    color: #1DB954; /* color Spotify */
+    color: #1DB954; 
     transition: transform 0.2s ease, color 0.2s ease;
 }
 .icono-spotify:hover {
@@ -69,7 +69,7 @@ header a:hover { text-decoration: underline; }
     color: #1ed760;
 }
 
-/* 3. SECCIÓN MAIN (POSICIONES ORIGINALES DE LA CAPTURA) */
+/* 3. SECCIÓN MAIN */
 .main-info {
     display: flex;
     align-items: center;
@@ -94,7 +94,6 @@ header a:hover { text-decoration: underline; }
 
 .texto-main {
     flex: 2;
-    
     -webkit-text-stroke: #000 2px;
     font-family: "anime-ace", "Bangers", cursive;
     padding: 20px;
@@ -109,9 +108,7 @@ header a:hover { text-decoration: underline; }
 .texto-main,
 .contenido p,
 .sub-texto-main,
-h1,
-h2,
-h3,
+h1, h2, h3,
 .columnas-grid .columna-item h3,
 .columnas-grid .columna-item p {
     -webkit-text-stroke: 1.6px #000;
@@ -123,7 +120,7 @@ h3,
     .texto-main,
     .contenido p,
     .sub-texto-main,
-    h1,h2,h3,
+    h1, h2, h3,
     .columnas-grid .columna-item h3,
     .columnas-grid .columna-item p {
         -webkit-text-stroke: 0 !important;
@@ -132,18 +129,18 @@ h3,
     }
 }
 
+/* CORRECCIÓN: Unificadas las dos clases duplicadas en una sola versión limpia */
 .sub-texto-main {
-    color: #ffffff; /* Texto blanco */
-    font-size: 1.5rem;
-    font-weight: 900; /* Letra bien gruesa para que se note el efecto */
-    text-transform: uppercase; /* El estilo cómic resalta más en mayúsculas */
+    font-family: "Delius", sans-serif;
+    color: #ffffff; 
+    font-size: clamp(16px, 4vw, 24px); /* Se encoge dinámicamente en pantallas pequeñas */
+    font-weight: 900; 
+    text-transform: uppercase; 
     letter-spacing: 1px;
-    
-    /* Aplica un trazo negro alrededor de cada letra */
+    text-align: center;
+    padding-bottom: 40px; /* Reducido para que en móviles no deje un hueco enorme */
     -webkit-text-stroke: 2px #000000; 
-    
-    /* Sombra de apoyo para asegurar que se lea en zonas claras u oscuras */
-    text-shadow: 3px 3px 0px #000000; 
+    text-shadow: 3px 3px 0px #000000;
 }
 
 .contenedor-spotify {
@@ -154,13 +151,6 @@ h3,
     justify-content: flex-end;
 }
 
-.sub-texto-main {
-    font-family: "Delius", sans-serif;
-    font-size: 18px;
-    text-align: center;
-    padding-bottom: 80px;
-}
-
 /* 4. SECCIÓN HISTORIA (CARRUSEL SIN JAVASCRIPT) */
 .contenido {
     max-width: 1300px;
@@ -168,7 +158,7 @@ h3,
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 100px; /* Separación amplia como en el bosquejo */
+    gap: 100px; 
     padding: 40px 5% 100px 5%;
 }
 
@@ -192,15 +182,10 @@ h3,
     flex: 1.5;
 }
 
-/* Contenedor del carrusel */
-/* Busca esta sección en tu CSS y reemplázala */
-
-/* Reemplaza estas reglas en tu archivo styles.css */
-
 .carrusel-contenedor {
     width: 100%;
     max-width: 900px; 
-    height: 700px; /* La altura fija que definimos */
+    height: 700px; 
     border-radius: 15px;
     box-shadow: 0 8px 24px rgba(0,0,0,0.45);
     overflow: hidden;
@@ -210,30 +195,16 @@ h3,
 .carrusel-img {
     width: 20%; 
     height: 100%; 
-    
-    /* CAMBIO CLAVE: 'fill' estira la imagen para que ocupe todo el alto */
-    /* Esto elimina el espacio vacío (box) que aparece en image_7edb21.jpg */
     object-fit: fill; 
-
-    
     display: block;
 }
 
-/* Ajuste para que en celulares no quede excesivamente alto */
-@media (max-width: 900px) {
-    .carrusel-contenedor {
-        height: 500px; 
-    }
-}
-
-/* Pista que contiene las fotos */
 .carrusel-pista {
     display: flex;
-    width: 500%; /* Para 4 fotos + 1 de transición */
+    width: 500%; 
     animation: carrusel-css 20s infinite ease-in-out;
 }
 
-/* Animación del carrusel (Pasos de 20%) */
 @keyframes carrusel-css {
     0%, 20% { transform: translateX(0); }
     25%, 45% { transform: translateX(-20%); }
@@ -242,29 +213,7 @@ h3,
     100% { transform: translateX(-80%); }
 }
 
-/* 5. RESPONSIVIDAD */
-@media (max-width: 1000px) {
-    .main-info, .contenido {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .texto-main, .texto-historia p {
-        text-align: center;
-    }
-
-    .contenedor-imagen, .contenedor-spotify, .imagen-historia {
-        justify-content: center;
-        width: 100%;
-    }
-
-    .carrusel-contenedor {
-        max-width: 95%;
-    }
-}
-
 /* --- SECCIÓN DE COLUMNAS CON ICONOS --- */
-
 .seccion-columnas {
     max-width: 1400px;
     width: 100%;
@@ -297,9 +246,8 @@ h3,
     align-items: flex-start;
 }
 
-/* Caja azul del icono como en image_747233.png */
 .icono-caja {
-    background-color: rgb(4, 21, 98); /* Azul vibrante */
+    background-color: rgb(4, 21, 98); 
     color: white;
     width: 60px;
     height: 60px;
@@ -325,21 +273,8 @@ h3,
     margin: 0;
 }
 
-/* Responsividad para móviles */
-@media (max-width: 800px) {
-    .columnas-grid {
-        flex-direction: column;
-        gap: 50px;
-    }
-    
-    .columna-item {
-        align-items: center;
-        text-align: center;
-    }
-}
-
 .lista-juegos{
-    font-size: 2.5rem;
+    font-size: clamp(1.5rem, 4vw, 2.5rem); /* Ajustado para que el texto grande no rompa pantallas chicas */
     list-style: none;
     padding: 0;
     margin: 0;
@@ -350,14 +285,72 @@ h3,
     margin-bottom: 10px;
 }
 
-/* Media responsive para la lista de juegos: videos e imágenes */
 .lista-juegos .media-game,
 .lista-juegos img.media-game {
     width: 100%;
-    max-width: 900px; /* límite en pantallas grandes */
+    max-width: 900px; 
     height: auto;
     display: block;
     margin: 12px auto;
+}
+
+/* --- SECCIÓN MI MÚSICA FAVORITA --- */
+.columnas-musica {
+    display: flex;
+    flex-wrap: nowrap; 
+    gap: 20px;
+    justify-content: flex-start; /* Cambio clave: alinea al inicio para un scroll cómodo */
+    width: 100%;
+    max-width: 100%; 
+    padding: 20px 5%;
+    overflow-x: auto; /* CORRECCIÓN: Permite hacer scroll de lado a lado en celulares para ver las canciones */
+    -webkit-overflow-scrolling: touch; /* Suaviza el scroll en celulares iPhone/Android */
+}
+
+.columnas-musica .contenedor-spotify {
+    flex: 0 0 auto; 
+    width: 280px; 
+    display: flex;
+    justify-content: center;
+}
+
+.columnas-musica iframe {
+    border: none;
+}
+
+/* 5. RESPONSIVIDAD INTEGRADA (MEDIA QUERIES MEJORADAS) */
+@media (max-width: 1000px) {
+    .main-info, .contenido {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 5%;
+    }
+    
+    .texto-main, .texto-historia p {
+        text-align: center;
+    }
+
+    .contenedor-imagen, .contenedor-spotify, .imagen-historia {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .carrusel-contenedor {
+        max-width: 100%;
+        height: 450px; /* Ajuste óptimo de altura para tablets */
+    }
+}
+
+@media (max-width: 800px) {
+    .columnas-grid {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .columna-item {
+        align-items: center;
+        text-align: center;
+    }
 }
 
 @media (max-width: 700px) {
@@ -366,31 +359,17 @@ h3,
         max-width: 95%;
         margin: 10px auto;
     }
-}
-
-/* --- SECCIÓN MI MÚSICA FAVORITA --- */
-.columnas-musica {
-    display: flex;
-    flex-wrap: nowrap; /* CRÍTICO: Fuerza a que todos los elementos se mantengan en una sola fila */
-    gap: 20px;
-    justify-content: center; 
-    width: 100%;
-    max-width: 100%; 
-    padding: 20px 5%;
-    overflow-x: auto; /* Si la pantalla es muy pequeña, la fila completa hará scroll horizontal en vez de amontonarse */
-    overflow: hidden;
-}
-
-.columnas-musica .contenedor-spotify {
-    flex: 0 0 auto; /* Evita que los contenedores se encojan y rompan el iframe */
-    width: 280px; /* Ancho fijo ideal para que Spotify no genere barras de scroll */
-    display: flex;
-    justify-content: center;
-}
-
-.columnas-musica iframe {
-    border: none;
-    overflow: hidden; /* Fuerza a ocultar cualquier barra interna */
+    
+    /* Encoge el header en teléfonos para que el menú no se amontone */
+    header {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+    
+    .carrusel-contenedor {
+        height: 300px; /* Evita que el carrusel se coma toda la pantalla del teléfono verticalmente */
+    }
 }
 
 @media (max-width: 1200px) {
